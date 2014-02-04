@@ -168,8 +168,9 @@
       }, 20);
     } else {
       // Fallback to jquery.animate
+      _moving = false;
       from.removeClass(activeClass);
-      this.$currentPage = to.addClass(activeClass);
+      to.addClass(activeClass);
     }
     this.init();
   };
