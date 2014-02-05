@@ -10,6 +10,12 @@
         this.el = el.jquery ? el[0] : el;
         this.$el = el.jquery ? el : $(el);
         this.$pages = this.$el.find(options.pageSelector);
+
+        // Stop because there aren't multiple pages
+        if ( this.$pages.length < 2 ) return;
+
+        this.$pages.addClass(options.pageClass);
+
         this.$indicators = $();
 
         this.eventend = options.transitionType + 'end webkit' + ( options.transitionType.charAt(0).toUpperCase() + options.transitionType.substr(1).toLowerCase() ) + 'End';
@@ -206,6 +212,7 @@
   };
 
   defaults = $.fn.pageable.defaults = {
+    pageClass: 'pageable-page',
     activeClass: 'is-active',
     beforeClass: 'is-before',
     changingClass: 'is-changing',
